@@ -7,8 +7,11 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
+import { Button } from '../ui/button';
+
 import Image from 'next/image';
 import NavItems from './NavItems';
+import { SignOutButton, SignedIn } from '@clerk/nextjs';
 
 const MobileNav = () => {
   return (
@@ -32,6 +35,11 @@ const MobileNav = () => {
           />
           <Separator className="border border-gray-60" />
           <NavItems />
+          <SignedIn>
+            <SignOutButton>
+              <Button className='rounded-full' >Sign-Out</Button>
+            </SignOutButton>
+          </SignedIn>
         </SheetContent>
       </Sheet>
     </nav>
