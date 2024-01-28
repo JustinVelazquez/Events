@@ -58,6 +58,7 @@ export async function POST(req: Request) {
   //   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
   //   console.log('Webhook body:', body);
 
+  // creates user
   if (eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
@@ -82,7 +83,7 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ message: 'OK', user: newUser });
   }
-
+  // updates user
   if (eventType === 'user.updated') {
     const { id, image_url, first_name, last_name, username } = evt.data;
 
@@ -96,7 +97,7 @@ export async function POST(req: Request) {
     const updatedUser = await updateUser(id, user);
     return NextResponse.json({ message: 'OK', user: updatedUser });
   }
-
+  // deletes user
   if (eventType === 'user.deleted') {
     const deletedUser = await deleteUser(id!);
 
